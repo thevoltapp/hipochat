@@ -342,9 +342,9 @@ class AllNotificationHandler(tornado.web.RequestHandler):
         logger.info(auth_token)
         auth_token = auth_token.get('token')
         redis_client = REDIS_CONNECTION
-    number = 0
+        number = 0
 
-    for key in redis_client.keys("all-message-ride_*{}*".format(auth_token)):
+        for key in redis_client.keys("all-message-ride_*{}*".format(auth_token)):
             #logger.info("found key" + key)
             #logger.info(type(number))
 

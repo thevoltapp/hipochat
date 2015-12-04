@@ -280,6 +280,8 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
         logger.info("push message sent")
 
     def on_message(self, message):
+        logger.info('message received')
+        logger.info(message)
         self.redis_client = REDIS_CONNECTION
         r = self.redis_client
         ts = int(time.time())

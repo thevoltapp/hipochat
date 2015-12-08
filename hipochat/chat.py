@@ -273,8 +273,11 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
         self.redis_client.sadd('%s-%s' % ('members', self.chat_token), self.authentication_token)
 
         pika_client.declare_queue(self.chat_token)
+        logger.info("socket is going to be assigned")
         pika_client.websocket = self
+        logger.info("socket assigned")
         websockets[self.chat_token].add(self)
+        logger.info("websocket is assigned")
 
     def push_message_sent(self, *args, **kwargs):
         logger.info("push message sent")

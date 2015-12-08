@@ -319,7 +319,9 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
     def on_close(self):
         logger.info("closing connection")
         websockets[self.chat_token].discard(self)
-
+    
+    def check_origin(self, origin):
+        return True
 
 class NotificationHandler(tornado.web.RequestHandler):
 
